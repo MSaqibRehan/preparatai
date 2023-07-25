@@ -1,0 +1,24 @@
+RewriteEngine On
+
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^preparatai\.lt$ [NC]
+RewriteRule ^(.*)$ https://preparatai.lt/$1 [L,R=302]
+
+RewriteRule ^admin/$ /admin/index.php [L,QSA]
+RewriteRule ^straipsniai/$ index.php?page_p=articles [L,QSA]
+RewriteRule ^sitemap.xml$ sitemap.php [L,QSA]
+
+RewriteRule ^straipsniai/(.*)/$ index.php?page_p=articles&slug=$1 [L,QSA]
+RewriteRule ^berniuku-vardai/$ index.php?sort=A&cat=vyru-vardai [L,QSA]
+RewriteRule ^mergaiciu-vardai/$ index.php?sort=A&cat=moteru-vardai [L,QSA]
+RewriteRule ^sunu-vardai/$ index.php?sort=A&cat=sunu-patinu-vardai [L,QSA]
+
+RewriteRule ^berniuku-vardai/(.*)/$ index.php?sort=$1&cat=vyru-vardai [L,QSA]
+RewriteRule ^mergaiciu-vardai/(.*)/$ index.php?sort=$1&cat=moteru-vardai [L,QSA]
+RewriteRule ^sunu-vardai/(.*)/$ index.php?sort=$1&cat=sunu-patinu-vardai [L,QSA]
+
+RewriteRule ^vaistai/(.*)/$ ?p_name=$1 [L,QSA]
+RewriteRule ^(.*)/$ index.php?p_name=$1 [L,QSA]
+
+# or
+# RewriteRule ^(.*)$ index.php?url=/$1 [L,QSA]

@@ -1,0 +1,5 @@
+AuthName "Serverio valdymas"
+AuthType Basic
+AuthUserFile /home/reklamuo/domains/talpix.lt/public_html/admin/.htpasswd
+
+require valid-user
